@@ -1,0 +1,281 @@
+
+<html> 
+  <head>
+      <title>
+        
+
+  
+      </title>
+      <link rel="stylesheet"
+      type="text/css" href="
+      main.css">
+  </head>
+       <a href="home.html"class="test" >Home</a>
+<a href="about me.html" class="test">About</a>
+<a href="contact.html" class="test">Contact</a>
+<a href="proj.html" class="test">My Projects</a>
+ <body background="purple.jpg">
+    <h1 style="color:green;
+      margin-left: auto;
+      margin-right: auto;
+    width: 75%
+
+     <h1 import pygame
+import palgame
+import random
+import math
+from random import randint
+SCREEN_WIDTH = 1000
+SCREEN_HEIGHT = 700
+file = '.mp3'
+pygame.init()
+pygame.mixer.init()
+pygame.mixer.music.load(file)
+pygame.mixer.music.play()
+
+GREEN = (0, 255, 0)
+BLUE  = (0, 0, 255)
+BLACK = (0 , 0 , 0)
+
+rec1_x = 440
+rec1_y = 0                                  {the boxes location & direction}
+rec1_dir_x= 0
+rec1_dir_y= 1
+
+
+rec2_x = 440
+rec2_y = 175
+rec2_dir_x= 0
+rec2_dir_y= 1
+
+rec3_x = 440
+rec3_y = 350
+rec3_dir_x= 0
+rec3_dir_y= 1
+
+rec4_x = 440
+rec4_y = 525
+rec4_dir_x= 0
+rec4_dir_y= 1
+
+
+
+
+screen = palgame.build_screen(SCREEN_WIDTH, SCREEN_HEIGHT)
+
+
+right_ticker = 0
+left_ticker  = 0
+
+
+palgame.build_screen(SCREEN_WIDTH, SCREEN_HEIGHT)
+right_ticker = 0
+left_ticker  = 0
+
+rects_y= ['rec1_y','rec2_y','rec3_y','rec4_y']
+#Blue_rec_x = random.randint(0, SCREEN_WIDTH-0)
+#Blue_rec_y = random.randint(0, SCREEN_HEIGHT-0)
+#y = random.randint(0, 400)
+#rock = Rock(640, y)
+
+i = 0
+
+random =0
+random1=0
+random2=0
+random3=0
+random4=0
+
+while True:
+  palgame.get_event()
+  #screen.blit(bg, (0,0))
+  
+
+
+  palgame.draw_rect(0, 0 , 420 , 700 , GREEN)
+  palgame.draw_rect(580, 0 , 420 , 700 , BLUE)
+
+  rec1_x = rec1_x + rec1_dir_x
+  rec1_y = rec1_y + rec1_dir_y
+
+  rec1_x = rec1_x + rec1_dir_x
+  rec1_y = rec1_y + rec1_dir_y               {the distance between the boxes}
+
+  rec2_x = rec2_x + rec2_dir_x
+  rec2_y = rec2_y + rec2_dir_y
+
+  rec2_x = rec2_x + rec2_dir_x
+  rec2_y = rec2_y + rec2_dir_y
+
+
+  
+  rec3_x = rec3_x + rec3_dir_x
+  rec3_y = rec3_y + rec3_dir_y
+
+  rec3_x = rec3_x + rec3_dir_x
+  rec3_y = rec3_y + rec3_dir_y
+
+  rec4_x = rec4_x + rec4_dir_x
+  rec4_y = rec4_y + rec4_dir_y
+
+  rec4_x = rec4_x + rec4_dir_x
+  rec4_y = rec4_y + rec4_dir_y
+
+  if(rec1_y > SCREEN_HEIGHT):
+    random = randint(0,1)
+    rec1_y = 0
+    rec1_x = 440
+
+
+  if(rec2_y > SCREEN_HEIGHT):
+    random1 = randint(0,1)
+    rec2_y = 0                           {to make the boxes come down after each other}
+    rec2_x = 440
+
+  if(rec3_y > SCREEN_HEIGHT):
+    random2 = randint(0,1)
+    rec3_y = 0
+    rec3_x = 440
+
+
+  if(rec4_y > SCREEN_HEIGHT):
+    random3 = randint(0,1)
+    rec4_y = 0
+    rec4_x = 440
+
+
+
+
+  for i in range(4):
+    if i == 0:
+      if(random == 0):
+        palgame.draw_rect(rec1_x, rec1_y , 120 , 120 , BLUE)
+        if (rec1_y>=525):
+          if palgame.Pressed == "right":            
+            right_ticker = 0
+            rec1_x=1200                                               {to control the movement of the boxes}
+          if palgame.Pressed == "left":            
+            clear_screen
+        if rec1_x == 440 and rec1_y >= 700:
+          clear_screen
+
+
+              
+          
+      else:
+        palgame.draw_rect(rec1_x, rec1_y , 120 , 120 , GREEN)
+        if (rec1_y>=525):
+          if palgame.Pressed == "right":            
+            clear_screen
+          if palgame.Pressed == "left":                   {if you moved any box to the wrong direction you will lose}
+            right_ticker = 15
+            rec1_x=1200 
+          if rec1_x == 440 and rec1_y >= 700:
+            clear_screen
+    elif i == 1:
+      if(random1 == 0):
+        palgame.draw_rect(rec2_x, rec2_y , 120 , 120 , BLUE)
+        if (rec2_y>=525):
+          if palgame.Pressed == "right":            
+            right_ticker = 15
+            rec2_x=1200
+          if palgame.Pressed == "left":            
+            right_ticker = 15
+            clear_screen
+          if rec1_x == 440 and rec1_y >= 700:
+            clear_screen
+        if rec1_x == 440 and rec1_y >= 700:
+          clear_screen
+
+      else:
+        palgame.draw_rect(rec2_x, rec2_y , 120 , 120 , GREEN)
+        if (rec2_y>=525):
+          if palgame.Pressed == "right":            
+            clear_screen
+
+          if palgame.Pressed == "left":            
+            right_ticker = 15
+            rec2_x=1200 
+
+        if rec2_x == 440 and rec2_y >= 700:
+          clear_screen
+    elif i == 2:
+      if(random2 == 0):
+        palgame.draw_rect(rec3_x, rec3_y , 120 , 120 , BLUE)
+        if (rec3_y>=525):
+          if palgame.Pressed == "right":            
+            right_ticker = 15
+            rec3_x=1200 
+
+          if palgame.Pressed == "left":            
+            right_ticker = 15
+            clear_screen    
+        if rec3_x == 440 and rec3_y >= 700:
+          clear_screen
+
+      else:
+        palgame.draw_rect(rec3_x, rec3_y , 120 , 120 , GREEN)
+        if (rec3_y>=525):
+          if palgame.Pressed == "right":            
+            clear_screen
+          if palgame.Pressed == "left":            
+            right_ticker = 15
+            rec3_x=1200 
+        if rec3_x == 440 and rec3_y >= 700:
+          clear_screen
+
+    elif i == 3:
+      if(random3 == 0):
+        palgame.draw_rect(rec4_x, rec4_y , 120 , 120 , BLUE)
+        if palgame.Pressed == "right":      
+          if (rec4_y>=525):      
+            right_ticker = 15
+            rec4_x=1200
+          if palgame.Pressed == "left":            
+            clear_screen
+        if rec4_x == 440 and rec4_y >= 700:
+          clear_screen
+      else:
+        palgame.draw_rect(rec4_x, rec4_y , 120 , 120 , GREEN)
+        if palgame.Pressed == "right":            
+          if (rec4_y>=525):
+            clear_screen
+          if palgame.Pressed == "left":            
+            right_ticker = 15
+            rec4_x=1200 
+        if rec4_x == 440 and rec4_y >= 700:
+          clear_screen
+
+
+
+
+  if pygame.key.get_pressed()[pygame.K_RIGHT] == True:            
+    if right_ticker == 0:
+      right_ticker = 15
+
+
+
+  if pygame.key.get_pressed()[pygame.K_LEFT] == True:            
+    if left_ticker == 0:
+      left_ticker = 15
+
+
+
+
+
+  #if rock.x < 0:
+    # y = random.randint(0, 400)
+    # rock = Rock(640, y)
+
+  #rock.rock()
+
+
+
+  palgame.draw_everything()
+  palgame.clear_screen() ;">
+
+
+   
+   
+
+  </h1>

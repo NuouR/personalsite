@@ -1,0 +1,16 @@
+<html>
+  <body>
+  	{%if display == True%}
+
+        <ol>
+       
+    	{% for name in list %}  
+     		<li>{{name}}</li> 
+
+    	{% endfor %}
+     	</ol>
+    	{% else %}
+    		<img src ="../static/pizza.jpg">
+ 	{% endif %}
+  </body>
+</html>
